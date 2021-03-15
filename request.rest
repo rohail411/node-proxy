@@ -1,0 +1,15 @@
+GET http://localhost:3000/info
+
+####
+
+GET http://localhost:3000/json_placeholder/posts/1
+Authorization: Bearer kdhdkhdjhdkjdhkdhkdhkjdhkdhdkdhkdhd
+
+###
+
+GET http://localhost:3000/json
+Authorization: Bearer kdhdkhdjhdkjdhkdhkdhkjdhkdhdkdhkdhd
+
+###
+
+GET https://jsonplaceholder.typicode.com/posts/1
