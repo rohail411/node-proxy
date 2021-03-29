@@ -1,66 +1,107 @@
 const express = require('express');
 const morgan = require("morgan");
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const { createProxyMiddleware } = require('http-proxy-middleware');
-
-// Create Express Server
+const modifyResponse = require('node-http-proxy-json');
+const { createLogs } = require('./controllers/logs');
+const axios = require('axios');
+const { user } = require('./data');
 const app = express();
+
+// app.use(express.json())
 
 // Configuration
 const PORT = 3000;
 const HOST = "localhost";
-// const API_SERVICE_URL = "https://jsonplaceholder.typicode.com";
-const API_SERVICE_URL = 'https://ztn.revbits.net:4200'
+const API_SERVICE_URL = 'https://ztn.revbits.net';
+const API_SERVICE_URL_2 = 'https://staging.ztn.revbits.net';
+
 // Logging
 app.use(morgan('dev'));
+// Routes
+const logsRoutes = require('./routes/logs')(express.Router());
 
 // Info GET endpoint
+app.use(cookieParser());
 
-// Authorization
-app.use('', (req, res, next) => {
-    if (req.headers.authorization) {
-        next();
-    } else {
-        next();
-        // res.sendStatus(403);
-    }
-});
- 
-const apiProxy = createProxyMiddleware('/api',{
-    target: 'https://ztn.revbits.net',
-    changeOrigin: true,
-    secure: false,
-    pathRewrite: {
-        '^/api/v1/Login':'/api/v1/Login'
-    },
-    headers: {
-        'JwtAuth':'JWT eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5ODAwZTk0LTVhY2MtNDU0ZC1iZDY4LTgzYWFkN2I5YWY5MiIsImVtYWlsSWQiOiJhZG1pbkB6dG4uY29tIiwiaWF0IjoxNjE1ODEwNTE4LCJleHAiOjE2MTU4MTc3MTh9.CHihchi6hLKcvx5dSB_Lzx3VCQhJ0rL5hMo5anz6xVftYj9GokBWtVnyAx5kAS-X_0Tu3A-l15s86dITydBwYuSapGgZLK2eTHSgq-kFyqWbaojvvHWXkVKLgY6K0QfMoubFcpxCYeMPsXWZwNgw18tciRpAgdQ4CHaQ-S1aIRLwYijk_5_-5lLzLGeAKumcX0sHPMpkmsCtMs_deLG9nI9C771KlOnhzFGZwN7LJ13nAeWxNKY4qmpbfBZGtl2wU6_4Jvcsg9N0MkDa44_jAh2zWBsSTAFn8UPjhmjt57ptj6DffTg6ZoKBjccmpfHCqlWHYi4g9d8i-T8THh4swX8HmVux2asK8qTjX8a9b9UpGmsf5lGP1ZHPXQGO2g2LObY5hnPHFaYQsRzLtyJAebihMwgzJM5TwwNCDe3mOnxG4mc-HdxCwlGGF3XWM8xbO8vedFA49RN7HndEMkz1WcmLzCUo7WHxPkUHHjmsjnPQDY3Y48ESVk2n9ye-PF-kyIXquc6zwDwm32Sm7Tx2qLd39Ub6AGJTQcUU5jQk1kgY7wLySO0BmaFTHVtoE0kvWFDF11AIFtrBTBKvmUMdQHVTiGFtHW-86s7DYayD2wPgcQJnm9Qe-vF3w0D1KUXwgU3iLsTOk9rPbo7Baz2gAsJcj3yi7ZLsy1OwHuCiK1A'
-    },
-    onProxyReq: (proxyReq, req, res) => {
-        console.log('URL', req.url);
-    }   
-});
-app.use(apiProxy);
+app.get('/app.html', async (req, res) => {
+    return res.sendFile(path.join(__dirname, '/index.html'));
+})
+
+app.use('/myApi', logsRoutes);
+
+app.use('/ztn',async (req, res, next) => {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+    const response = await axios.post(API_SERVICE_URL+'/api/v1/Login', { email: user.email, password: user.password }, { headers: { Accept: 'application/json', 'User-Agent': 'ZTN Proxy Client' } });
+    res.cookie('JWT_TOKEN', response.data.data.token);
+    res.cookie('CURRENT_USER_ID', response.data.data.userid);
+    res.cookie('USER_SETTINGS', `${response.data.data.user_settings}`);
+    res.cookie('CURRENT_USER_PERM',response.data.data.permissions)
+    res.cookie('siteName', 'ztn');
+    return res.redirect('/');
+})   
 
 // Proxy endpoints
-app.use('*', (req, res, next) => {
-    req.header('host', 'https://ztn.revbits.net');
+app.use('*',async (req, res, next) => {
+    req.site = req.cookies['siteName'];
     next();
 }, createProxyMiddleware({
     target: API_SERVICE_URL,
     changeOrigin: true,
-    secure:false,
+    secure: false,
+    ws: true,
+    logLevel: 'debug',
     pathRewrite: {
-        '^/api': '/api/v1/Login',
-        '^/posts':'/posts',
     },
     headers: {
-        'JwtAuth':'JWT eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijg5ODAwZTk0LTVhY2MtNDU0ZC1iZDY4LTgzYWFkN2I5YWY5MiIsImVtYWlsSWQiOiJhZG1pbkB6dG4uY29tIiwiaWF0IjoxNjE1ODEwNTE4LCJleHAiOjE2MTU4MTc3MTh9.CHihchi6hLKcvx5dSB_Lzx3VCQhJ0rL5hMo5anz6xVftYj9GokBWtVnyAx5kAS-X_0Tu3A-l15s86dITydBwYuSapGgZLK2eTHSgq-kFyqWbaojvvHWXkVKLgY6K0QfMoubFcpxCYeMPsXWZwNgw18tciRpAgdQ4CHaQ-S1aIRLwYijk_5_-5lLzLGeAKumcX0sHPMpkmsCtMs_deLG9nI9C771KlOnhzFGZwN7LJ13nAeWxNKY4qmpbfBZGtl2wU6_4Jvcsg9N0MkDa44_jAh2zWBsSTAFn8UPjhmjt57ptj6DffTg6ZoKBjccmpfHCqlWHYi4g9d8i-T8THh4swX8HmVux2asK8qTjX8a9b9UpGmsf5lGP1ZHPXQGO2g2LObY5hnPHFaYQsRzLtyJAebihMwgzJM5TwwNCDe3mOnxG4mc-HdxCwlGGF3XWM8xbO8vedFA49RN7HndEMkz1WcmLzCUo7WHxPkUHHjmsjnPQDY3Y48ESVk2n9ye-PF-kyIXquc6zwDwm32Sm7Tx2qLd39Ub6AGJTQcUU5jQk1kgY7wLySO0BmaFTHVtoE0kvWFDF11AIFtrBTBKvmUMdQHVTiGFtHW-86s7DYayD2wPgcQJnm9Qe-vF3w0D1KUXwgU3iLsTOk9rPbo7Baz2gAsJcj3yi7ZLsy1OwHuCiK1A'
-        },
-    router: {
-        // when request.headers.host == 'dev.localhost:3000',
-        // override target 'http://www.example.org' to 'http://localhost:8000'
-        'https://ztn.revbits.net': 'http://localhost:3000'
+        'User-Agent':'ZTN Proxy Client'
+    },
+    // router: {
+    //     'localhost:3000/https': API_SERVICE_URL_2+':443',
+    //     "localhost:3000/socket": API_SERVICE_URL_2+':8080'
+    // },
+    router: (_req) => {
+        if (_req.site === 'ztn') {
+            return API_SERVICE_URL;
+        }
+        // else if (_req.url === '/https') {
+        //     return API_SERVICE_URL + ':443';
+        // }
+        // else if (_req.url === '/socket') {
+        //     return API_SERVICE_URL + ':8080';
+        // }
+        
+    },
+    onProxyReq(proxyReq, req, res) {
+        if (req.url.startsWith('/api')) {
+            createLogs(req);
+        }
+    },
+    onProxyRes(proxyRes, req, res) {
+        delete proxyRes.headers['content-length'];
+        modifyResponse(res, proxyRes.headers['content-encoding'], function (body) {
+            if (body && typeof body === "string") {
+                const dynamicScript = `<script type="text/javascript">
+                sessionStorage.setItem('JWT_TOKEN','${req.cookies['JWT_TOKEN']}');
+                sessionStorage.setItem('CURRENT_USER_ID','${req.cookies['CURRENT_USER_ID']}');
+                sessionStorage.setItem('USER_SETTINGS','${req.cookies['USER_SETTINGS']}');
+                sessionStorage.setItem('CURRENT_USER_PERM','${req.cookies['CURRENT_USER_PERM']}');
+                </script>`;
+                //http://localhost:3000:443
+                body = body.split('https://"+location.hostname+"').join('http://localhost:3000')
+                body = body.split(`location.protocol+"//"+location.hostname`).join('"http://localhost:3000"');
+                body = body.split(`o.a.BASE_URL`).join('"https://ztn.revbits.net"');
+                // body = body.split(`location.protocol+"//"+location.hostname:8080`).join('http://localhost:3000/socket');
+                body = body.split('"wss://"+location.hostname+":8080"').join('"wss://ztn.revbits.net:8080"');
+                if (body.includes('<!--CIP-SCRIPT-HERE-->')) {
+                    body = body.replace('<!--CIP-SCRIPT-HERE-->', dynamicScript);
+
+                }
+
+            }
+            return body;
+          });
     },
    
 }));

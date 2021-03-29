@@ -1,15 +1,18 @@
-GET http://localhost:3000/info
 
-####
+GET http://localhost:3000/myApi/get
 
-GET http://localhost:3000/json_placeholder/posts/1
-Authorization: Bearer kdhdkhdjhdkjdhkdhkdhkjdhkdhdkdhkdhd
+###
+POST http://localhost:3000/myApi/create/1?name=rohail
+Content-Type: application/json
+
+{
+    "method":"PATCH",
+    "desc":"none"
+}
+
+###
+GET http://localhost:3000/myApi/create/2?name=nabeel
 
 ###
 
-GET http://localhost:3000/json
-Authorization: Bearer kdhdkhdjhdkjdhkdhkdhkjdhkdhdkdhkdhd
-
-###
-
-GET https://jsonplaceholder.typicode.com/posts/1
+GET http://localhost:3000/app
