@@ -1,13 +1,13 @@
 
-GET http://localhost:3000/myApi/get
+GET https://localhost/myApi/get
 
 ###
-POST http://localhost:3000/myApi/create/1?name=rohail
+POST https://localhost/myApi/create/1?name=rohail
 Content-Type: application/json
 
 {
-    "method":"PATCH",
-    "desc":"none"
+    "targetUrl":"https://google.com",
+    "body":"{'email':'rohailbutt@gmail.com','password':'11979944'}"
 }
 
 ###
@@ -16,3 +16,7 @@ GET http://localhost:3000/myApi/create/2?name=nabeel
 ###
 
 GET http://localhost:3000/app
+
+###
+
+
