@@ -13,7 +13,7 @@ const app = express();
 
 // Configuration
 const API_SERVICE_URL = 'https://ztn.revbits.net';
-const API_SERVICE_URL_2 = 'https://staging.ztn.revbits.net';
+const API_SERVICE_URL_2 = 'https://ztn.revbits.net';
 const API_SERVICE_URL_3 = 'https://enpast.com';
 
 
@@ -30,6 +30,26 @@ app.get('/app.html', async (req, res) => {
 })
 
 app.use('/myApi', logsRoutes);
+app.get('/proxy/:id',async(req,res,next)=>{
+    const {id} = req.params;
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+    const getProxy = await axios.post('https://ztn.revbits.net/api/v1/Proxy/GetOneProxyApps',
+    {
+        id:id
+    },{headers:{'User-Agent':'ZTN Proxy Client'}});
+
+    const proxyApp = getProxy.data.data;
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+    const response = await axios.post(proxyApp.targetUrl+'/api/v1/Login', { ...proxyApp.credentials }, { headers: { Accept: 'application/json', 'User-Agent': 'ZTN Proxy Client' } });
+    // return res.send(response.data);
+    res.cookie('JWT_TOKEN', response.data.data.token);
+    res.cookie('CURRENT_USER_ID', response.data.data.userid);
+    res.cookie('USER_SETTINGS', `${response.data.data.user_settings}`);
+    res.cookie('CURRENT_USER_PERM',response.data.data.permissions)
+    res.cookie('siteName', proxyApp.name);
+    res.cookie('targetUrl',proxyApp.targetUrl);
+    return res.redirect('/');
+})
 
 app.use('/ztn',async (req, res, next) => {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
@@ -54,7 +74,8 @@ app.use('/enpast',async (req, res, next) => {
 
 function modifyBody(req,body){
     let service_url = '';
-    let socket_url = ''
+    let socket_url = '';
+       
     if(req.site==='ztn'){
         service_url = API_SERVICE_URL_2;
         socket_url = API_SERVICE_URL_2.split('https://')[1]
@@ -86,6 +107,7 @@ function modifyBody(req,body){
 // Proxy endpoints
 app.use('*',async (req, res, next) => {
     req.site = req.cookies['siteName'];
+    req.targetUrl = req.cookies['targetUrl'];
     next();
 }, createProxyMiddleware({
     target: API_SERVICE_URL,
@@ -97,16 +119,14 @@ app.use('*',async (req, res, next) => {
     },
     
     router: (_req) => {
-        if (_req.site === 'ztn') {
-            return API_SERVICE_URL_2;
+        if (_req.site) {
+            return _req.targetUrl;
         }
-        else if (_req.site === 'enpast') {
-            return API_SERVICE_URL_3;
-        }
+        
     },
     onProxyReq(proxyReq, req, res) {
         if(req.site==='ztn'){
-            proxyReq.setHeader('User-Agent','ZTN Desktop Client');
+            proxyReq.setHeader('User-Agent','ZTN Proxy Client');
         }
         if(req.site==='enpast'){
             proxyReq.setHeader('User-Agent','ENPAST Desktop Client');

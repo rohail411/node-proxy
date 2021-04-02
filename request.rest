@@ -19,4 +19,4 @@ GET http://localhost:3000/app
 
 ###
 
-
+GET http://localhost:3000/proxy/1
