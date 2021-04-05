@@ -76,13 +76,9 @@ function modifyBody(req,body){
     let service_url = '';
     let socket_url = '';
        
-    if(req.site==='ztn'){
-        service_url = API_SERVICE_URL_2;
-        socket_url = API_SERVICE_URL_2.split('https://')[1]
-    }
-    else if(req.site==='enpast'){
-        service_url = API_SERVICE_URL_3;
-        socket_url = API_SERVICE_URL_3.split('https://')[1]
+    if(req.site){
+        service_url = req.targetUrl;
+        socket_url = req.targetUrl.split('https://')[1]
     }
     if (body && typeof body === "string") {
         body = body.split('https://"+location.hostname+"').join(process.env.PROXY_URL)
