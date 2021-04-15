@@ -1,5 +1,4 @@
 const Logs = require('../database/models/index').Logs;
-
 const getAllLogs = async (req, res) => {
     try {
         const logs = await Logs.findAll({});
