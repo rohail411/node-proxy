@@ -7,7 +7,7 @@ const modifyResponse = require('node-http-proxy-json');
 const { createLogs } = require('./controllers/logs');
 const axios = require('axios');
 const { user, crud } = require('./data');
-const { createUserCred, getOneUserCred } = require('./controllers/user-credentials');
+const { createUserCred } = require('./controllers/user-credentials');
 const {ztnAndEnpast, epsApp, updatePortalApp, esPortalApp, acmePortalApp, dtPortalApp} = require('./revbitsApp');
 const {modifyBodyAcme,modifyBodyDt,modifyBodyEps,modifyBodyEs,modifyBodyUpdate,modifyBodyZtnAndEnpast} = require('./modifyResponseBody');
 const { parseCookie } = require('./utils');
@@ -38,30 +38,30 @@ app.use('/myApi', logsRoutes);
 app.get('/proxy/:id',async(req,res,next)=>{
     const {id} = req.params;
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-    const getProxy = await axios.post('https://ztn.revbits.net/api/v1/Proxy/GetOneProxyApp',
-    {
-        id:id
-    },{headers:{'User-Agent':'ZTN Proxy Client'}});
-    const proxyApp = getProxy.data.data;
-    // const proxyApp = crud[id];
-    if(proxyApp.slug==='ztn' || proxyApp.slug==='enpast'){
-        return ztnAndEnpast(res,proxyApp);
+    // const getProxy = await axios.post('https://ztn.revbits.net/api/v1/Proxy/GetOneProxyApp',
+    // {
+    //     id:id
+    // },{headers:{'User-Agent':'ZTN Proxy Client'}});
+    // const proxyApp = getProxy.data.data;
+    const proxyApp = crud[id];
+    switch (proxyApp.slug) {
+        case 'ztn':
+        case 'enpast':
+            return ztnAndEnpast(res,proxyApp);
+        case 'eps':
+             return epsApp(res,proxyApp);
+        case 'es':
+            return esPortalApp(res,proxyApp);
+        case 'updatePortal':
+            return updatePortalApp(res,proxyApp);
+        case 'acme':
+            return acmePortalApp(res,proxyApp);
+        case 'dt':
+            return dtPortalApp(res,proxyApp);   
+        default:
+            break;
     }
-    else if(proxyApp.slug==='eps'){
-        return epsApp(res,proxyApp)
-    }
-    else if(proxyApp.slug==='updatePortal'){
-        return updatePortalApp(res,proxyApp);
-    }
-    else if(proxyApp.slug==='es'){
-        return esPortalApp(res,proxyApp);
-    }
-    else if(proxyApp.slug==='acme'){
-        return acmePortalApp(res,proxyApp);
-    }
-    else if(proxyApp.slug==='dt'){
-        return dtPortalApp(res,proxyApp);   
-    }
+ 
 });
 
 
@@ -149,9 +149,19 @@ app.use('/es',async (req, res, next) => {
         "email": "abdullah.zafar+1@invozone.com",
         "password":"ddb84f2fa212d098ba2133516583a83ad83127f4c9ab3fc5dad73b99b97cea38221866fba73aa707aa57eae2ed0ef197407d467fcb6496211cf9c77d2b5b2c88"
     });
-    res.cookie('userData',{...response.data.response.userData,sessiontoken:response.data.response.token});
-    res.cookie('roles',response.data.response.userData.roles);
-    res.cookie('permissions',response.data.response.userData.permissions);
+    const createC = await createUserCred({
+        credentials:{
+            ...response.data.response,
+            userData:{
+                ...response.data.response.userData,
+                sessiontoken:response.data.response.token
+            }
+        },
+        siteName:'es',
+        targetUrl:'https://es.revbits.com'
+    });
+    const cred = createC.toJSON();
+    res.cookie('proxy-user-id',cred.id);
     res.cookie('siteName','es');
     res.cookie('targetUrl','https://es.revbits.com');
     return res.redirect('/');

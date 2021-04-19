@@ -102,10 +102,12 @@ async function modifyBodyAcme(req,body){
 async function modifyBodyEs(req,body){
     if (body && typeof body === "string") {
         if (body.includes('</body>') && body.includes('https://es.revbits.com/es_preloader.gif')) {
+            let cred = await getOneUserCred(req.cookies['proxy-user-id']);
+            cred = cred.toJSON();
             const dynamicScript = `<script type="text/javascript">
-            localStorage.setItem('userData','${JSON.stringify(req.cookies['userData'])}');
-            localStorage.setItem('roles','${JSON.stringify(req.cookies['roles'])}');
-            localStorage.setItem('permissions','${JSON.stringify(req.cookies['permissions'])}');
+            localStorage.setItem('userData','${JSON.stringify(cred.credentials.userData)}');
+            localStorage.setItem('roles','${JSON.stringify(cred.credentials.userData.roles)}');
+            localStorage.setItem('permissions','${JSON.stringify(cred.credentials.userData.permissions)}');
             </script></body>`;
             body = body.split('</body>').join(dynamicScript);
 

@@ -1,7 +1,13 @@
+const {Op} = require('sequelize')
 const Logs = require('../database/models/index').Logs;
 const getAllLogs = async (req, res) => {
     try {
-        const logs = await Logs.findAll({});
+        const logs = await Logs.findAll({
+           where:{
+            url:{
+                [Op.like]:'%/pam%'
+            }}
+        });
         return res.status(200).json({ logs });
     } catch (error) {
         console.log(error)
@@ -11,8 +17,6 @@ const getAllLogs = async (req, res) => {
 
 const create = async (req, res) => {
     try {
-        console.log(req.params);
-        console.log(req.query);
         const createLog = await createLogs(req);    
         return res.status(200).json({ createLog });
     } catch (error) {

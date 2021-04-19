@@ -60,7 +60,6 @@ const acmePortalApp = async (res,proxyApp) => {
         const response = await axios.post(proxyApp.targetUrl+'/api/v1/login', { ...proxyApp.credentials});
         console.log(response.data);
     res.cookie('authToken', response.data.response.token);
-    res.cookie('_pportalref', response.data.response.token);
     res.cookie('_clientpk',response.data.response.userData.publicKey);
     res.cookie('siteName', proxyApp.slug);
     res.cookie('targetUrl',proxyApp.targetUrl);
@@ -96,9 +95,19 @@ const esPortalApp = async (res,proxyApp) => {
         const response = await axios.post(proxyApp.targetUrl+'/api/v2/auth/login', {
             ...proxyApp.credentials
          });
-         res.cookie('userData',{...response.data.response.userData,sessiontoken:response.data.response.token});
-         res.cookie('roles',response.data.response.userData.roles);
-         res.cookie('permissions',response.data.response.userData.permissions);
+         const createC = await createUserCred({
+            credentials:{
+                ...response.data.response,
+                userData:{
+                    ...response.data.response.userData,
+                    sessiontoken:response.data.response.token
+                }
+            },
+            siteName:'es',
+            targetUrl:'https://es.revbits.com'
+        });
+        const cred = createC.toJSON();
+        res.cookie('proxy-user-id',cred.id);
          res.cookie('siteName',proxyApp.slug);
          res.cookie('targetUrl',proxyApp.targetUrl);
          return res.redirect('/');
