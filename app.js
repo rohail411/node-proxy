@@ -11,6 +11,8 @@ const { createUserCred } = require('./controllers/user-credentials');
 const {ztnAndEnpast, epsApp, updatePortalApp, esPortalApp, acmePortalApp, dtPortalApp} = require('./revbitsApp');
 const {modifyBodyAcme,modifyBodyDt,modifyBodyEps,modifyBodyEs,modifyBodyUpdate,modifyBodyZtnAndEnpast} = require('./modifyResponseBody');
 const { parseCookie } = require('./utils');
+const jwt = require('jsonwebtoken');
+const cors = require('cors');
 const app = express();
 
 // app.use(express.json())
@@ -19,9 +21,9 @@ const app = express();
 const API_SERVICE_URL = 'https://ztn.revbits.net';
 const API_SERVICE_URL_2 = 'https://staging.ztn.revbits.net';
 const API_SERVICE_URL_3 = 'https://enpast.com';
-const API_SERVICE_URL_EPS = 'http://localhost:3000';
+const API_SERVICE_URL_EPS = 'https://eps.revbits.net';
 
-
+app.use(cors());
 // Logging
 app.use(morgan('dev'));
 // Routes
@@ -37,6 +39,7 @@ app.get('/app.html', async (req, res) => {
 app.use('/myApi', logsRoutes);
 app.get('/proxy/:id',async(req,res,next)=>{
     const {id} = req.params;
+    const {authToken} = req.query;
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
     // const getProxy = await axios.post('https://ztn.revbits.net/api/v1/Proxy/GetOneProxyApp',
     // {
@@ -44,6 +47,8 @@ app.get('/proxy/:id',async(req,res,next)=>{
     // },{headers:{'User-Agent':'ZTN Proxy Client'}});
     // const proxyApp = getProxy.data.data;
     const proxyApp = crud[id];
+    proxyApp.user = jwt.decode(authToken);
+    
     switch (proxyApp.slug) {
         case 'ztn':
         case 'enpast':

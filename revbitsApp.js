@@ -11,6 +11,8 @@ const ztnAndEnpast = async(res,proxyApp) =>{
         res.cookie('CURRENT_USER_PERM',response.data.data.permissions)
         res.cookie('siteName', proxyApp.slug);
         res.cookie('targetUrl',proxyApp.targetUrl);
+        res.cookie('currentUser',proxyApp.user.id);
+        res.cookie('companyId',proxyApp.companyId);
         return res.redirect('/');
     } catch (error) {
         return res.json({error:'Something went wrong try again later'});
@@ -27,6 +29,9 @@ const epsApp = async (res,proxyApp) =>{
         res.cookie('proxy-user-id', cred.id);
         res.cookie('siteName', 'eps');
         res.cookie('targetUrl',proxyApp.targetUrl);
+        res.cookie('currentUser',proxyApp.user.id);
+        res.cookie('companyId',proxyApp.companyId);
+
         return res.redirect('/dashboard');
     } catch (error) {
         console.log(error)
@@ -43,7 +48,9 @@ const updatePortalApp = async (res,proxyApp) =>{
         res.cookie('token', response.data.response.token);
         res.cookie('siteName', 'updatePortal');
         res.cookie('targetUrl',proxyApp.targetUrl);
-        
+        res.cookie('currentUser',proxyApp.user.id);
+        res.cookie('companyId',proxyApp.companyId);
+
         const createC = await createUserCred({credentials:response.data.response,siteName:proxyApp.slug,targetUrl:proxyApp.targetUrl});
         const cred = createC.toJSON();
         res.cookie('proxy-user-id',cred.id);
@@ -58,11 +65,13 @@ const acmePortalApp = async (res,proxyApp) => {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
     try {
         const response = await axios.post(proxyApp.targetUrl+'/api/v1/login', { ...proxyApp.credentials});
-        console.log(response.data);
     res.cookie('authToken', response.data.response.token);
     res.cookie('_clientpk',response.data.response.userData.publicKey);
     res.cookie('siteName', proxyApp.slug);
     res.cookie('targetUrl',proxyApp.targetUrl);
+    res.cookie('currentUser',proxyApp.user.id);
+    res.cookie('companyId',proxyApp.companyId);
+
     return res.redirect('/');
     } catch (error) {
         return res.json({error:'Something went wrong try again later'});
@@ -78,6 +87,8 @@ const dtPortalApp = async (res,proxyApp) => {
     res.cookie('token', response.data.token);
     res.cookie('siteName', proxyApp.slug);
     res.cookie('targetUrl',proxyApp.targetUrl);
+    res.cookie('currentUser',proxyApp.user.id);
+    res.cookie('companyId',proxyApp.companyId);
     
     const createC = await createUserCred({credentials:response.data,siteName:'dt',targetUrl:'https://dt.revbits.net'});
     const cred = createC.toJSON();
@@ -108,9 +119,12 @@ const esPortalApp = async (res,proxyApp) => {
         });
         const cred = createC.toJSON();
         res.cookie('proxy-user-id',cred.id);
-         res.cookie('siteName',proxyApp.slug);
-         res.cookie('targetUrl',proxyApp.targetUrl);
-         return res.redirect('/');
+        res.cookie('siteName',proxyApp.slug);
+        res.cookie('targetUrl',proxyApp.targetUrl);
+        res.cookie('currentUser',proxyApp.user.id);
+        res.cookie('companyId',proxyApp.companyId);
+
+        return res.redirect('/');
     } catch (error) {
         console.log(error)
         return res.json({error:'Something went wrong try again later'});

@@ -1,5 +1,6 @@
 
-GET https://localhost/myApi/get
+GET http://localhost:3000/myApi/get/667e1e23-09c7-400c-aee6-7e6d78a355a9?days=60&groupBy=siteName&groupBy=createdAt&userId=89800e94-5acc-454d-bd68-83aad7b9af92
+
 
 ###
 POST http://localhost:3000/myApi/create/1?name=rohail
