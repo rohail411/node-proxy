@@ -1,0 +1,882 @@
+[
+    {
+        "domain": "localhost",
+        "expirationDate": 1777322896.173954,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "remember_checked_on",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1682748400.860625,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "guest_id",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "v1%3A161967639956118611"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1682714897,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "_ga",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "GA1.2.2118851452.1619609560"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1619729297,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "_gid",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "GA1.2.1543937978.1619609560"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1619729286,
+        "hostOnly": true,
+        "httpOnly": false,
+        "name": "_sl",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1"
+    },
+    {
+        "domain": "localhost",
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "_twitter_sess",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": true,
+        "storeId": null,
+        "value": "BAh7CiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%250ASGFzaHsABjoKQHVzZWR7ADoPY3JlYXRlZF9hdGwrCPy9dhx5AToMY3NyZl9p%250AZCIlZGMzMTIwZjFkZTUwN2QxYmQ5ZDE1MzcyNTUwYWUwYzQ6B2lkIiVmNGEw%250AYTM5MjkwODE5YjRlODY0NTI1OGNiNTU0OTRlMDoJdXNlcmwrCQCwV1OCcT4T--6e66a3611eae3b2cef04e9b27658bb3c3ee1d68f"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1777317025.390338,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "ads_prefs",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "\"HBERAAA=\""
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1777322896.174132,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "auth_token",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "d6116716c437f96855b4ef8bfdff8f12e8149d70"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1777322896.477958,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "ct0",
+        "path": "/",
+        "sameSite": "lax",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "20ff7b41647f627327c7e89936dc8cbaf889b7ef32b4650797c1b3dfb40e584cd9e39c35e9a74dbd7feff3af8fdcd91e8ca5daf3019f217442eb4b297f2ee76c92a521333ae8c1bb75fe5309768c153c"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1619653688.858667,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "gt",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1387690162566664193"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1666903696.173864,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "kdt",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "qDZAPB73fd9tzVpkcQqy1z0wTeAedBzvAhAxT2ja"
+    },
+    {
+        "domain": "localhost",
+        "hostOnly": true,
+        "httpOnly": false,
+        "name": "lang",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": true,
+        "storeId": null,
+        "value": "en"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1682748400.860437,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "personalization_id",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "\"v1_ykYIPBten9f1OBqgX8jTDg==\""
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1777322899.263722,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "twid",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "u%3D1386670539834634240"
+    }
+]
+
+
+cookie: att=1-ckQRKoqOmAL2a5wDxodxczHTbsLF38r2ANORt8lM; gt=1387693859623288833; _mb_tk=202d9720a87911eba65adf113b8a6fa7; _sl=1; _ga=GA1.2.703169555.1619673730; _gid=GA1.2.667377220.1619673730; kdt=lzNkvw0uz6tK4TEvmasujjKq8LECI2iNNzsU0S1C; remember_checked_on=1; lang=en; dnt=1; personalization_id="v1_BeNIX8uSi7jHoa9EkElBGg=="; guest_id=v1%3A161967377137538950; ct0=0adf92f2aa6c5cef3b22c5fd5130752b; _twitter_sess=BAh7CSIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%250ASGFzaHsABjoKQHVzZWR7ADoPY3JlYXRlZF9hdGwrCDt9FBx5AToMY3NyZl9p%250AZCIlYWQ3MTBmZDgwNTk4Yzc4MjM5ZmUwNzFiYmRiZTAxYTc6B2lkIiU2MTJk%250AZmMxNGY0ZWFjNTk2NzdjOTYzYTI1NmNjOGMwYQ%253D%253D--586612d1eb43d528b84356f82cb7252a46ccdbc1; external_referer=padhuUp37zjvDVpWLbwpdDrHbLp7XPbt|0|8e8t2xd8A2w%3D
+
+
+
+
+set-cookie: fm=0; Max-Age=0; Expires=Thu, 29 Apr 2021 16:43:48 GMT; Path=/; Domain=.twitter.com; Secure; HTTPOnly
+set-cookie: ads_prefs="HBERAAA="; Max-Age=157680000; Expires=Tue, 28 Apr 2026 16:43:48 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+set-cookie: kdt=Jb9bVjBVa48dsee6JiH1jWofquHf3pUyvkGcR0Ex; Max-Age=47260800; Expires=Fri, 28 Oct 2022 16:43:48 GMT; Path=/; Domain=.twitter.com; Secure; HTTPOnly
+set-cookie: remember_checked_on=1; Max-Age=157680000; Expires=Tue, 28 Apr 2026 16:43:48 GMT; Path=/; Domain=.twitter.com; Secure
+set-cookie: _twitter_sess=BAh7CiIKZmxhc2hJQzonQWN0aW9uQ29udHJvbGxlcjo6Rmxhc2g6OkZsYXNo%250ASGFzaHsABjoKQHVzZWR7ADoPY3JlYXRlZF9hdGwrCNSpgx55AToMY3NyZl9p%250AZCIlZjJlODQ2MWE4ZDMyZGRmZDI5MWY2YzI0YzFjYjFjYjI6B2lkIiUxYjFh%250AMjU1ZTBiYTAzMjZiNzFhYzM4YWZlYzI0NDNiZjoJdXNlcmwrCQCwV1OCcT4T--95c84e9dd13d37e08c113c68119ddea7e63feca0; Path=/; Domain=.twitter.com; Secure; HTTPOnly
+set-cookie: twid="u=1386670539834634240"; Max-Age=157680000; Expires=Tue, 28 Apr 2026 16:43:48 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+set-cookie: _mb_tk=; Max-Age=0; Expires=Thu, 29 Apr 2021 16:43:48 GMT; Path=/
+set-cookie: auth_token=b51b38a69a4aae3a9239ab770be44a595c26e443; Max-Age=157680000; Expires=Tue, 28 Apr 2026 16:43:48 GMT; Path=/; Domain=.twitter.com; Secure; HTTPOnly; SameSite=None
+
+
+
+
+
+[
+    {
+        "domain": "localhost",
+        "expirationDate": 1622138522.609071,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "lms_ads",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "AQFzd6Qxg9tMRgAAAXkUfsNzuqZa3Kx6Wh5KZ2xWCJi2F3lez92zaxCFuIxF43A_49GuaYLUHBanrAHIip2DU8O_ykKC3Zef"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1626592795.258515,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "_guid",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "6b2c558e-ae46-4629-bae6-bb0f2dbee120"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1681930248.990749,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "bcookie",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "\"v=2&ff463e48-4525-4f1e-888b-68e17feb657b\""
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1627546429,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "_gcl_au",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "1.1.656466353.1618816412"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1619856923,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "_gid",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "GA1.2.2067648228.1619769754"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1635322387,
+        "hostOnly": true,
+        "httpOnly": false,
+        "name": "g_state",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "{\"i_l\":1,\"i_p\":1619777587687}"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1622138522.609145,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "lms_analytics",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "AQFzd6Qxg9tMRgAAAXkUfsNzuqZa3Kx6Wh5KZ2xWCJi2F3lez92zaxCFuIxF43A_49GuaYLUHBanrAHIip2DU8O_ykKC3Zef"
+    },
+    {
+        "domain": "localhost",
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "AMCVS_14215E3D5995C57C0A495C55%40AdobeOrg",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": true,
+        "storeId": null,
+        "value": "1"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1651306520.097275,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "li_at",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "AQEDASPTz3IDqZYBAAABeSHYsXwAAAF5ReU1fE0AG-veY2Yia4gxukts-7V_vwQ_0PKHeJKPbnZCVfsGkikwCO7DTou87hXFJky3LciROO8agclskgi-ixh-ioc5se80vUl3DwA8hM0fHZ1ZDFQM8zwS"
+    },
+    {
+        "domain": "localhost",
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "lang",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": true,
+        "storeId": null,
+        "value": "v=2&lang=en-us"
+    },
+    {
+        "domain": "localhost",
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "spectroscopyId",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": true,
+        "storeId": null,
+        "value": "b60a692d-e5aa-4bea-8d7a-5c61dbe8b0ed"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1682842445.019404,
+        "hostOnly": true,
+        "httpOnly": false,
+        "name": "visit",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "v=1&M"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1619856146.137491,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "lidc",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "\"b=VB62:s=V:r=V:a=V:p=V:g=2896:u=135:i=1619770523:t=1619856145:v=2:sig=AQFYyJ_mJXwrJ6r7xhHhgCTsSMRwHOvi\""
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1682842523,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "_ga",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "GA1.2.1891431539.1618816402"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1619770566,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "_gat",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "1"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1622362525,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "aam_uuid",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "89646130942291006552083192782533425968"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1635321757,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "AMCV_14215E3D5995C57C0A495C55%40AdobeOrg",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "-637568504%7CMCIDTS%7C18748%7CMCMID%7C89823185453442487402028823188481050875%7CMCAAMLH-1620374557%7C3%7CMCAAMB-1620374557%7CRKhpRz8krg2tLO6pguXWp5olkAcUniQYPHaMWWgdJ3xzPWQmdj0y%7CMCOPTOUT-1619776957s%7CNONE%7CvVersion%7C5.1.1%7CMCCIDH%7C1532451524"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1622138522.007335,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "AnalyticsSyncHistory",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "AQK4bj1ZanME6gAAAXkUfrzWSoQv8dpRRejNMGg1Z7ChUdStq9wBhADTIhmBmzBZG8l1BYdjCzmp41CxVkb2Xw"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1681930248.990806,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "bscookie",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "\"v=1&20210419071316bc4158f0-cacc-455e-8dc6-6ab38c1a7063AQEum2i2zywRS64S2PxCeBEeWb2PJs30\""
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1627546520.09733,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "JSESSIONID",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "\"ajax:5838598063544486735\""
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1651306520.097142,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "li_rm",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "AQEAmvSfdWNKegAAAXkOBp0fc1FtYMJE3IhOHnoDasAEl-TyhHmITb8JDfMaGtR59gWd45VhvJ6vV8u7rAcBP6erfGHsw8lOf-FX1qpVI2o79p5j0_ZaSLbvxfzjh05QzRJd7mCaZWjhyCKyTMYP15JRBYBkZpRFZAPCpF-LZ1iZBc1EogALK5xPInGGHMFhc4BM5EawVlQx5kEw-wO7V35cRwwZQp__i2f5BJD5iNy_dElayuU_qxz_gH4h8n9hNAbZ9MSRzu-Hw2j6_onni9qy0EUl8lJAz_J1dFtjDna7Tg0t4lPXa7-brgD-09p5kNzZFCtR2xXRLHTs1qk"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1627546523.542796,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "li_sugr",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "d1b9d14b-2d8f-446d-a468-e356d44560ea"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1627546520.097313,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "liap",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "true"
+    },
+    {
+        "domain": "",
+        "expirationDate": 1620980121,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "timezone",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "America/Los_Angeles"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1622362522,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "UserMatchHistory",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "AQKEZhOonTeXtgAAAXkh2LklbPiIl-tWmL-yaA2RuMQcAc1j7JH035O2Jyy0AmJA8Rrsx063jzmSdXmK5gS8wnMrtUOE6pg2u07SsnqchL-a1Hx5Nswr-6-iGT0hFDO0XI7CWtn7NU_msAbUpFnQhBgwKfvQC_MRgejxoXpyg-Vxkm9bFbQk49UGqNAAjcrw7zkayJCBirOkNVaBjOPHSLRyvCx55DNK0lNLV4mBFjuwp-nlqQOwIvTfYXsO98NLLg2IYrCOOB4yLN9cJg5Me63qh8uxGDyc-ce5WTs"
+    }
+]
+
+
+
+
+
+
+
+[
+    {
+        "domain": "localhost",
+        "expirationDate": 1682850434.109205,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "datr",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "XduLYNZmRz4jx1TsGOuGznfz"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1627554583.970547,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "fr",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1SdyC1zmLJJGQWpx6.AWVX3i0PxThEJOyktHSq_FJD4i4.Bgi9td.Ba.GCL.0.0.Bgi9uI."
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1651314439.572785,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "xs",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "15%3AMxG4-_Mt3yLnkQ%3A2%3A1619778440%3A6164%3A5973"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1651314439.572763,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "c_user",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "100008005301482"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1620383275,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "dpr",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "2"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1682850442.572636,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "sb",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "XduLYLLtojPHapyaB21pMnMa"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1619868443.24719,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "spin",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "r.1003714499_b.trunk_t.1619778443_s.1_v.2_"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1620383273,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "wd",
+        "path": "/",
+        "sameSite": "lax",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1440x821"
+    }
+]
+
+
+
+// facebook
+
+[
+    {
+        "domain": "localhost",
+        "expirationDate": 1683699549.014168,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "datr",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "W9CYYHy_hKjsGK05I2Rr2TWR"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1628434180.02567,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "fr",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1wykUtSVgHi8fsHjs.AWUMpck6GXEU9GRpYox7iWWRQsc.BgmUgF.mK.AAA.0.0.BgmUgF.AWXynZDjr70"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1652194181.02562,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "xs",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "16%3AW6G705U52vcmxw%3A2%3A1620637807%3A-1%3A5973%3A%3AAcVk21tIhNIS-tzpMmEA639i02P6pDtDvEhVj-7WDg"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1652194181.025542,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "c_user",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "100008005301482"
+    },
+    {
+        "domain": "localhost",
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "presence",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": true,
+        "storeId": null,
+        "value": "C%7B%22t3%22%3A%5B%5D%2C%22utc3%22%3A1620649660234%2C%22v%22%3A1%7D"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1621257903,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "dpr",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "2"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1683709810.298799,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "sb",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "W9CYYFhJiycS5DHwz6RiDJlp"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1620727810.77665,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "spin",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "r.1003759908_b.trunk_t.1620637810_s.1_v.2_"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1621242606,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "wd",
+        "path": "/",
+        "sameSite": "lax",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1440x821"
+    }
+]
+
+//Instagram
+
+[
+    {
+        "domain": "localhost",
+        "expirationDate": 1650971253.845104,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "ig_nrcb",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1628052876.995422,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "ds_user_id",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "47596420633"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1651726476.995321,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "csrftoken",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "wE2mcPL06ka8UxDLjT6EFVjzJa9GGQ1A"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1682507253.845068,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "ig_did",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "A3B2BADD-A1EE-4105-A163-3670A762EAAD"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1682507253.845018,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "mid",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "YIae9AAEAAEM-EJ8kxnAuThiUvUA"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1651746485.941614,
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "sessionid",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "47596420633%3Axg9CTQ4YMSk5oU%3A27"
+    },
+    {
+        "domain": "localhost",
+        "expirationDate": 1651812175,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "fbm_124024574287414",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "base_domain=localhost"
+    },
+    {
+        "domain": "localhost",
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "fbsr_124024574287414",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": true,
+        "storeId": null,
+        "value": "InIMyRYC9PAT0alD_LF1Xh-BPK2SCIvIdg09K3l-0fU.eyJ1c2VyX2lkIjoiMTAwMDA4MDA1MzAxNDgyIiwiY29kZSI6IkFRQW5PSk5XbW05eGNualBvdXNqNnQyNldyWnRrNHFfTW0xMjFzUENZcmlGc1VKSTdxcjZVdGttS3V6Z0w5UGhvTVFZRUdVN3JHTGlmdVVld2kwMS1DOEE4MldIUE1VZ29fZERnY2ZHODA3NDBJY0RSeEZXcHFfVEJ5eG9vNnZQajAzTnBFWnd1Ym13LTZQWGRaYUJYT2RzWDI3QnYtZjJnNmlFNFVrZTJ1aE55U3lUOXRhV0hsYlZqZE5fNFN0aGdDNkVNMExGOXBEX1hrYzhQNld4ZDBpRXVITkxIbmVjdTE4VGY4UE0tVjVZWE5wcFFaVEVINlZxeGVDeVNwRUZqQTRNUXJXcjB4RURnM20yeHlybEdKbG1VSTRIMENnRzVOYkF6eXFfYS1OMnExNXBBWnJrUkF4ejM3RjdvbVNFTV8xdlZNYXJmMjVPU1JuMW9rQktQcnhvIiwib2F1dGhfdG9rZW4iOiJFQUFCd3pMaXhuallCQUg3TDhVd1BBUG9ZMGR6Q1dVaTBWVE5WRmdWaXFIejNWbHhpU3BmNG1BUXd6VXJXRUlZa2RJam5aQ1lzVVJjUGhRZDU5S1RIVjBsRTIzczZQbWVpM0FxcUMxYlQ5SU9aQ1hTc1M4b2U0cmI1UnQzY2tUTDdVMXJxY2FMa2syODdmQ2hsOUp0YnBJQVBqaUpuMGIzZUNYUUZQcVREaHdaQVVaQk80QnhlIiwiYWxnb3JpdGhtIjoiSE1BQy1TSEEyNTYiLCJpc3N1ZWRfYXQiOjE2MjAyNzcxMjN9"
+    },
+    {
+        "domain": "localhost",
+        "hostOnly": false,
+        "httpOnly": true,
+        "name": "rur",
+        "path": "/",
+        "sameSite": null,
+        "secure": true,
+        "session": true,
+        "storeId": null,
+        "value": "LDC"
+    }
+]
