@@ -33,3 +33,12 @@ Content-Type: application/json
     "email": "rohail.butt+1@invozone.com",
     "password": "b7d4e49a3fd7f9b1eec6088188baf30a76c2a20ec102f4c82d2f5abe3fa88c544497d05c31abd1cceae1ac8f44916b225ef04ed911f0fea0c903ed71cd018e30!"
 }
+
+###
+POST https://localhost/proxyApi/PamStartSession
+Content-Type: application/json
+
+{
+   "username": "4uQjumriBwVFoIkD4BMV",
+    "password": "rheeVv8kJRwdAyVUURFA"
+}

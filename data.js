@@ -112,6 +112,16 @@ const crud = {
                 '#PWD_INSTAGRAM_BROWSER:10:1620317416:AdNQAEe75Qjb5wI8+xlscCbQT7rgWr1QcDlHul+PumQL1HEnRe5ASy7eSRLv/5M1LnrYwdIlW/TUn/95LGuTefsfFc0eaeed5nNHNc/XyIGA0cAtH/I2jkMd//3UN1aqNuk9/+5+m+iXiRwB1SMAgsjZSQ=='
         },
         companyId: '667e1e23-09c7-400c-aee6-7e6d78a355a9'
+    },
+    11:{
+        siteName:'Zendesk',
+        slug:'zendesk',
+        targetUrl:'https://invozone.zendesk.com',
+        credentials:{
+            email:'rohail.butt@invozone.com',
+            password:'11979944Rohail!'
+        },
+        companyId: '667e1e23-09c7-400c-aee6-7e6d78a355a9'
     }
 };
 

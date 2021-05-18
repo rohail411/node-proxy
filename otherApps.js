@@ -99,9 +99,7 @@ const twitterApp = async (res, proxyApp) => {
             if (resp.error) throw new Error(resp.error);
             resp.headers['set-cookie'] =
                 resp.headers['set-cookie'].map((cookie) => {
-                    cookie = cookie.split('.www.twitter.com').join('localhost');
                     cookie = cookie.split('.twitter.com').join('localhost');
-                    cookie = cookie.split('twitter.com').join('localhost');
                     return cookie;
                 }) || [];
             res.setHeader('set-cookie', resp.headers['set-cookie']);
@@ -174,8 +172,62 @@ const instagramApp = async (res, proxyApp) => {
         });
 };
 
+const zendesk = async (res,proxyApp)=>{
+    var axios = require('axios');
+var qs = require('qs');
+var data = qs.stringify({
+  'utf8': '✓',
+  'authenticity_token': 'DeEQ5INpBfd1Ws6N+b/WBIccrPN22/SvkQZiQJwHCuY=',
+  'return_to_on_failure': '/auth/v2/login/signin?return_to=https%3A%2F%2Finvozone.zendesk.com%2F&theme=hc&locale=1&auth_origin=%2Cfalse%2Ctrue&browser=chrome',
+  'return_to': 'https://invozone.zendesk.com/auth/v2/login/signed_in?auth_origin=%2Cfalse%2Ctrue&theme=hc',
+  'brand_id': '',
+  'theme': 'hc',
+  'auth_origin': '',
+  'form_origin': 'other',
+  'user[email]': 'rohail.butt@invozone.com',
+  'user[password]': '11979944Rohail!',
+  'commit': 'Sign+in' 
+});
+var config = {
+  method: 'post',
+  url: 'https://invozone.zendesk.com/access/login',
+  headers: { 
+    'authority': 'invozone.zendesk.com', 
+    'cache-control': 'max-age=0', 
+    'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"', 
+    'sec-ch-ua-mobile': '?0', 
+    'upgrade-insecure-requests': '1', 
+    'origin': 'https://invozone.zendesk.com', 
+    'content-type': 'application/x-www-form-urlencoded', 
+    'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9', 
+    'sec-fetch-site': 'same-origin', 
+    'sec-fetch-mode': 'navigate', 
+    'sec-fetch-user': '?1', 
+    'sec-fetch-dest': 'iframe', 
+    'referer': 'https://invozone.zendesk.com/auth/v2/login/signin?return_to=https%3A%2F%2Finvozone.zendesk.com%2F&theme=hc&locale=1&auth_origin=%2Cfalse%2Ctrue&browser=chrome', 
+    'accept-language': 'en-US,en;q=0.9', 
+    'cookie': '__cfruid=117119b2c4029bd98029f66be18459648af89ab4-1621236279; __cf_bm=9b1a24c495fb00299e1fd957e64cbe90a734873a-1621236282-1800-AQQmyJBNzh19aUBMUmWgyRk6Kw4yEz8KIqBfnUFgy3TI/mlWZw6MuSOV6wW8B1garKLAICQVZGdQRkJaNXJnv1x9Szour3coCFmOP1RSMWsRbWuGEzzD+MatNCU6kG3prurEVT+3OtVzC32ns9hbWe0418i9lbwjZ92Ga6/7w3V7XFdkjwohot2++mpeaURFvA==; _zendesk_cookie=BAhJIkp7ImRldmljZV90b2tlbnMiOnsiMzgyNTY3MDY0OTk3IjoiNVBzUUdXOUk2N1ZhNnRMOUFoQjdIM3psRzVpdXNWRGoifX0GOgZFVA%3D%3D--1bcbcae06c1a88f01bed5a70a66a972ea738ece6; _gid=GA1.2.1765725894.1621236293; _zendesk_shared_session=-ZTV3R0Y3cCs1Vmhhd2lobHV2RU9mVlNaSi9TQ1dxTlRYVGZkSlpXS1ExbmFMMVd5dGRZMUp0ZUZyU1B0UllBbVVWV1d4THVFSVVFZDBTdXJmZ2xDNlhvcVV0bXFuK1BIbHA4ODlJU0dxcldtemJMTlJ0NzJtRzBUVU1nVUJ5Y01kSFdDcWlNY2pJN1o0ajBXbE94cm1RPT0tLWJCenBHbXJsb0svRGgzeEV3WU0zamc9PQ%3D%3D--50dd4a1287d702a17691195107a4e8d849846b48; _zendesk_session=BAh7CkkiD3Nlc3Npb25faWQGOgZFVEkiJTc4NDhiNzYwYTQ5MWJlYmJhYjUxYzkxMjc2MDJhMTRhBjsAVEkiDmlzX21vYmlsZQY7AFRGSSIMYWNjb3VudAY7AEZpA572pkkiE3dhcmRlbi5tZXNzYWdlBjsAVHsASSIQX2NzcmZfdG9rZW4GOwBGSSIxRGVFUTVJTnBCZmQxV3M2TitiL1dCSWNjclBOMjIvU3ZrUVppUUp3SEN1WT0GOwBG--8278078b728bdd4d19b97fd326de6bdede48abd5; optimizelyEndUserId=oeu1621236373102r0.004825456798271288; ajs_anonymous_id=%223e90f53f-7720-4a55-ab82-6c585bb36bc2%22; _gcl_au=1.1.1791226308.1621236374; _fbp=fb.1.1621236374104.103207479; _hjTLDTest=1; _hjid=f64b8f15-03bf-4c93-a2de-5ce354d75ca9; _hjAbsoluteSessionInProgress=0; _biz_sid=8dee58; _biz_ABTestA=%5B1663819921%5D; _biz_uid=d32618e443d44616a1d04e7ea47df3d7; _biz_flagsA=%7B%22Version%22%3A1%2C%22ViewThrough%22%3A%221%22%2C%22XDomain%22%3A%221%22%7D; _ga_FBP7C61M6Z=GS1.1.1621236373.1.1.1621236387.0; flight=%7B%22first_touch_timestamp%22%3A1621236373247%2C%22last_touch_timestamp%22%3A1621236387572%2C%22first_referrer%22%3A%22%22%2C%22last_referrer%22%3A%22%22%2C%22first_landing_page%22%3A%22https%3A%2F%2Fwww.zendesk.com%2F%22%2C%22last_landing_page%22%3A%22https%3A%2F%2Fwww.zendesk.com%2Fdesktop%2F%22%2C%22time_on_site%22%3A0%2C%22total_time_on_site%22%3A0%2C%22page_views%22%3A2%2C%22visits%22%3A1%2C%22trials%22%3A0%2C%22domain%22%3A%22none%22%2C%22seenOffer%22%3A%22ProactiveChat%22%2C%22seenOfferVersion%22%3A%221.0.4%22%7D; _uetsid=6270e660b6e011eba77687dbda8fe038; _uetvid=627107e0b6e011eb870805bb3bb460aa; _biz_nA=4; _biz_pendingA=%5B%5D; _ga=GA1.2.2075220401.1621236293; _zendesk_cookie=BAhJIkp7ImRldmljZV90b2tlbnMiOnsiMzgyNTY3MDY0OTk3IjoiNVBzUUdXOUk2N1ZhNnRMOUFoQjdIM3psRzVpdXNWRGoifX0GOgZFVA%3D%3D--1bcbcae06c1a88f01bed5a70a66a972ea738ece6; _zendesk_session=BAh7CkkiD3Nlc3Npb25faWQGOgZFVEkiJWIwZDY3ZmEwOWIzMDZlYTcyOWU4YTY3NGE3YjFkOWViBjsAVEkiDmlzX21vYmlsZQY7AFRGSSIMYWNjb3VudAY7AEZpA572pkkiE3dhcmRlbi5tZXNzYWdlBjsAVHsASSIQX2NzcmZfdG9rZW4GOwBGSSIxRGVFUTVJTnBCZmQxV3M2TitiL1dCSWNjclBOMjIvU3ZrUVppUUp3SEN1WT0GOwBG--835d82ff46853a972e1edc19798e1c2f629adf00; _zendesk_shared_session=-TGhJQWtqS0dnek5VVGw2cGpWYlpodFdUWUl0dkptTDRtN1Q0WHYvRTBZbFAyZzRneHc0d0d5MjBRVElRTk9hVE5XTEFlZDc1V0VMQ2VFbUV0VEZGQ3FHcTRKbDlYY1pld2dBREh6K0VGODRkQ3NWbmgxT1JtWmFaM3NsWjRKMEUtLWJsWVI5V3NrS0Z5dmVsMS9nOWJRcXc9PQ%3D%3D--62bce452e4ed630769041e6e58afa423a0dafa89'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+    console.log(JSON.stringify(response.data));
+    let d = response.data.split('invozone.zendesk.com').join('localhost');
+    return res.send(d);
+})
+.catch(function (error) {
+  console.log(error);
+  res.json({error});
+});
+
+}
+
 module.exports = {
     linkedinApp,
     twitterApp,
-    instagramApp
+    instagramApp,
+    zendesk
 };

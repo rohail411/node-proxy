@@ -2,7 +2,9 @@ const { Op, QueryTypes } = require('sequelize');
 const Logs = require('../database/models/index').Logs;
 const db = require('../database/models/index');
 const modules = require('../modules');
-
+const axios = require('axios');
+const {pamSessionSchemaValidate} = require('../validation');
+const {apps} = require('../utils');
 const getAllLogs = async (req, res) => {
     try {
         let daysQuery = '';
@@ -128,12 +130,50 @@ const createLogs = async (req) => {
             data.module = modules[siteName][found] || '';
         }
     }
-    const res = await Logs.create(data);
+    const res = await Logs.create(data);    
     return res;
 };
+
+const proxyStartSessionForPam = async (req,res) =>{
+    const {error,value} = pamSessionSchemaValidate(req.body);
+    if(error){
+        return res.json({error:error.details[0].message});
+    }
+    try {
+        const proxyApp = await axios.post('https://staging.enpast.com:8443/api/v1/StartSession',{
+        ...req.body,
+        userIp: req.ip.split(':').slice(-1)[0]
+        });
+        if(proxyApp.data.return_code===1000){
+            const {data:{data:{session_id,asset}}} = proxyApp;
+            const app = {
+                siteName:asset.appName,
+                slug:asset.appName,
+                targetUrl:asset.hostname,
+                user:{
+                    id:session_id
+                },
+                credentials:{
+                    email:asset.username,
+                    password:asset.password
+                }
+            }
+            return res.json(app)
+            return apps(res,app);
+        }
+        else {
+            return res.json({error:'something went wrong'});
+        }
+    } catch (error) {
+        return res.json({error:'something went wrong'});
+    }
+    
+}
+
 
 module.exports = {
     getAllLogs,
     create,
-    createLogs
+    createLogs,
+    proxyStartSessionForPam
 };

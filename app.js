@@ -27,18 +27,19 @@ const {
     modifyBodyLi,
     modifyProxyResLi,
     modifyProxyResIn,
-    modifyProxyResFa
+    modifyProxyResFa,
+    modifyBodyFa
 } = require('./modifyResponseBody');
 const { parseCookie } = require('./utils');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
-const { linkedinApp, twitterApp, instagramApp } = require('./otherApps');
+const { linkedinApp, twitterApp, instagramApp, zendesk } = require('./otherApps');
 const app = express();
 
 // app.use(express.json())
 
 // Configuration
-const API_SERVICE_URL_EPS = 'https://twitter.com';
+const API_SERVICE_URL_EPS = 'https://www.dropbox.com';
 
 app.use(cors());
 // Logging
@@ -53,7 +54,7 @@ app.get('/app.html', async (req, res) => {
     return res.sendFile(path.join(__dirname, '/index.html'));
 });
 
-app.use('/myApi', logsRoutes);
+app.use('/proxyApi/', express.json(),logsRoutes);
 app.get('/proxy/:id', async (req, res, next) => {
     const { id } = req.params;
     const { authToken } = req.query;
@@ -86,6 +87,8 @@ app.get('/proxy/:id', async (req, res, next) => {
             return twitterApp(res, proxyApp);
         case 'instagram':
             return instagramApp(res, proxyApp);
+        case 'zendesk':
+            return zendesk(res, proxyApp);
         default:
             break;
     }
@@ -116,9 +119,6 @@ app.use(
                 } else return a;
             }
 
-            if (_req.url.startsWith('/v3')) {
-                return 'https://static.xx.fbcdn.net/rsrc.php';
-            }
             //Twitter stuff
             if (_req.url.startsWith('/responsive')) {
                 return 'https://abs.twimg.com';
@@ -203,10 +203,11 @@ app.use(
                     case 'twitter':
                         return modifyBodyTw(body);
                     case 'instagram':
-                    case 'facebook':
                         return modifyBodyIn(body);
+                    case 'facebook':
+                        return modifyBodyFa(body);
                     default:
-                        break;
+                        return body;
                 }
             });
         }
